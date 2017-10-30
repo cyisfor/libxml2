@@ -6898,11 +6898,10 @@ htmlReadFd(int fd, const char *URL, const char *encoding, int options)
         return (NULL);
     xmlInitParser();
 
-    xmlInitParser();
     input = xmlParserInputBufferCreateFd(fd, XML_CHAR_ENCODING_NONE);
     if (input == NULL)
         return (NULL);
-    ctxt = xmlNewParserCtxt();
+    ctxt = htmlNewParserCtxt();
     if (ctxt == NULL) {
         xmlFreeParserInputBuffer(input);
         return (NULL);
