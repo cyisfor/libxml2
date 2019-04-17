@@ -1,7 +1,18 @@
 add_library(xml
 	include/libxml/xmlversion.h
+	include/libxml/HTMLtree.h
 	config.h
 	HTMLtree.c
+	globals.c
+	SAX2.c
+	tree.c # xmlTextConcat
+	xmlstring.c # xmlStrncatNew
+	buf.c # xmlBufCreate
+	parserInternals.c # xmlErrMemory
+	parser.c # xmlCtxtReset inputPop
+	hash.c # xmlHashFree
+	dict.c # xmlDictFree
+	error.c # xmlParserValidityWarning
 	xmlwriter.c)
 
 target_include_directories(xml PUBLIC
