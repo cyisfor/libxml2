@@ -1,3 +1,9 @@
+cmake_minimum_required(VERSION 3.0)
+project(xml VERSION 0.1)
+# an EXTREMELY pared down version of libxml2, without any of the tests
+# without compression, or network crap
+# just parsing
+
 add_library(xml
 	include/libxml/xmlversion.h
 	include/libxml/HTMLtree.h
@@ -20,8 +26,15 @@ add_library(xml
 	chvalid.c # xmlIsPubidChar_tab
 	uri.c # xmlURIUnescapeString
 	xmlmemory.c # xmlCleanupMemory
-	
+	xpath.c # xmlXPathInit
+	entities.c # xmlGetPredefinedEntity
+	xpointer.c # xmlXPtrWrapLocationSet
+	valid.c # xmlGetID xmlFreeDocElementContent
+	list.c # xmlListEmpty
+	xmlsave.c # xmlNsListDumpOutput
 	xmlwriter.c)
+
+target_link_libraries(xml PUBLIC m)
 
 target_include_directories(xml PUBLIC
 	"${CMAKE_CURRENT_SOURCE_DIR}/include"
