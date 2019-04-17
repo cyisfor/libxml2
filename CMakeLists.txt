@@ -11,8 +11,16 @@ add_library(xml
 	parserInternals.c # xmlErrMemory
 	parser.c # xmlCtxtReset inputPop
 	hash.c # xmlHashFree
-	dict.c # xmlDictFree
-	error.c # xmlParserValidityWarning
+	dict.c # xmlDictFree xmlDictSetLimit
+	error.c # xmlParserValidityWarning xmlParserValidityError
+	threads.c # xmlRMutex*
+	xmlIO.c # xmlParserInputBufferCreateFd xmlParserInputBufferCreateIO
+	encoding.c # xmlCharEncInput xmlCharEncOutput
+	HTMLparser.c # UTF8ToHtml
+	chvalid.c # xmlIsPubidChar_tab
+	uri.c # xmlURIUnescapeString
+	xmlmemory.c # xmlCleanupMemory
+	
 	xmlwriter.c)
 
 target_include_directories(xml PUBLIC
@@ -26,6 +34,8 @@ add_custom_command(
 	config.h
 	COMMAND ${CMAKE_CURRENT_SOURCE_DIR}/configure
 	ARGS
+	--without-zlib
+	--without-lzma
 	--without-modules
 	--without-xinclude
 	--without-valid
