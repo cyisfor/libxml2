@@ -32,6 +32,8 @@ add_library(xml
 	valid.c # xmlGetID xmlFreeDocElementContent
 	list.c # xmlListEmpty
 	xmlsave.c # xmlNsListDumpOutput
+	nanohttp.c # xmlNanoHTTPRedir
+	nanoftp.c # etc
 	xmlwriter.c)
 
 target_link_libraries(xml PUBLIC m)
@@ -60,8 +62,8 @@ add_custom_command(
 	--without-python
 	--without-pattern
 	--without-legacy
-	--without-ftp
-	--without-http
+	--with-ftp
+	--with-http
 	--without-debug
 	--without-catalog
 	--disable-ipv6
