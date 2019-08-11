@@ -72,3 +72,8 @@ add_custom_command(
 	--disable-static
 	MAIN_DEPENDENCY ${CMAKE_CURRENT_SOURCE_DIR}/configure)
 
+add_custom_command(
+	OUTPUT ${CMAKE_CURRENT_SOURCE_DIR}/configure
+	# autotools is the WORST
+	WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
+	COMMAND autoreconf -i)
